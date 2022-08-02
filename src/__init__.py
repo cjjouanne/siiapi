@@ -15,7 +15,7 @@ app.config['SECRET_KEY'] = "a12b9af2eb5a26ch8rl1e1c6771e52bmnfsfa2z6"
 app.jinja_env.add_extension('jinja2.ext.do')
 
 
-app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://gestion8_cjjouanne:inverges1205@localhost:5432/gestion8_siiapi"
+app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///site.db"
 db = SQLAlchemy(app)
 
 if db:
