@@ -1,0 +1,218 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h1>Docs</h1>
+    <div class="container-fluid row mt-5">
+        <div class="col-sm-3">
+            <ul>
+                <li><a href="#API-KEYS">Bienvenido</a></li>
+                <li><a href="#Llamadas-de-usuario">Llamadas de usuario</a></li>
+                <li><a href="#Llamadas-de-empresa">Llamadas de empresa</a></li>
+                <li><a href="#otras-llamads">Otras llamadas</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-9">
+            <div>
+                <h3>Bienvenido</h3>
+                <p class="text-justify text-muted">
+                    Esta es la documentacion de APISII. Aquí encontrarás lo que necesitas para emplementar 
+                    de manera rápida esta API en tu sistema. Cualquier duda o sugerencia, o si encuentras
+                    algun error, no dudes en contactarnos.
+                </p>
+            </div>
+            <div class="mt-5">
+                <h3 id="API-KEYS">API Keys</h3>
+                <p class="text-justify text-muted">
+                    Nuestro sistema utiliza API Keys para autenticar que la API está siendo utilizada por
+                    un usuario registrado. Para esto, cada usuario tiene su API Key individual, la se puede obtener
+                    haciendo click en el botón "Copiar API Key Personal", la cual sirve para autenticar al usuario en
+                    las llamadas de usuario de la API. Además, cada empresa tiene su propia API Key, la cual se
+                    obtiene haciendo click en el boton "Copiar API Key" correspondiente a la empresa, que sirve para
+                    autenticar llamadas exclusivamente a la empresa deseada, sin que se pueda acceder a las otras empresas
+                    registradas.
+                </p>
+            </div>
+            <div class="mt-5">
+                <h3 id="Llamadas-de-usuario">Llamadas de usuario</h3>
+                <p class="text-justify text-muted">
+                    Las llamadas de usuario permiten obtener los datos que las llamadas de empresa, 
+                    pero en el caso de los usuarios, se pueden ver todas las empresas registradas 
+                    utilizando la misma API Key.
+                </p>
+                <h4>Resumen de Compras</h4>
+                <div>
+                    <ul>
+                        <li><span class="font-weight-bold">apiKey:</span><span class="text-muted"> corresponde a tu apiKey de usuario, disponible en tu perfil.</span></li>
+                        <li><span class="font-weight-bold">R.U.T.:</span><span class="text-muted"> el RUT de alguna de las empresas registradas en tu perfil.</span></li>
+                        <li><span class="font-weight-bold">Contraseña:</span><span class="text-muted"> contraseña del Servicio de Impuestos Internos (SII) de la empresa correspondiente.</span></li>
+                        <li><span class="font-weight-bold">Periodo:</span><span class="text-muted"> periodo tributario que se desea consultar en formato Año-Mes (Ej: Julio de 2022 corresponde a 202207).</span></li>
+                    </ul>
+                    <div class="container row">
+                        <input class="form-control mb-1 bg-dark text-light" type="text" value="{{origin}}/api/v1/getResumen/compra/<apiKey>/<rut>/<password>/<period>" id="getResumenCompraUser"/>
+                        <button class="btn btn-light font-weight-bold my-0 my-sm-0" onclick="myFunction('getResumenCompraUser')">Copiar</button>
+                    </div>
+                </div>
+                <h4>Resumen de Ventas</h4>
+                <div>
+                    <ul>
+                        <li><span class="font-weight-bold">apiKey:</span><span class="text-muted"> corresponde a tu apiKey de usuario, disponible en tu perfil.</span></li>
+                        <li><span class="font-weight-bold">R.U.T.:</span><span class="text-muted"> el RUT de alguna de las empresas registradas en tu perfil.</span></li>
+                        <li><span class="font-weight-bold">Contraseña:</span><span class="text-muted"> contraseña del Servicio de Impuestos Internos (SII) de la empresa correspondiente.</span></li>
+                        <li><span class="font-weight-bold">Periodo:</span><span class="text-muted"> periodo tributario que se desea consultar en formato Año-Mes (Ej: Julio de 2022 corresponde a 202207).</span></li>
+                    </ul>
+                    <div class="container row">
+                        <input class="form-control mb-1 bg-dark text-light" type="text" value="{{origin}}/api/v1/getResumen/venta/<apiKey>/<rut>/<password>/<period>" id="getResumenVentaUser"/>
+                        <button class="btn btn-light font-weight-bold my-0 my-sm-0" onclick="myFunction('getResumenVentaUser')">Copiar</button>
+                    </div>
+                </div>
+                <h4>Detalle de Compras Exportable</h4>
+                <div>
+                    <ul>
+                        <li><span class="font-weight-bold">apiKey:</span><span class="text-muted"> corresponde a tu apiKey de usuario, disponible en tu perfil.</span></li>
+                        <li><span class="font-weight-bold">R.U.T.:</span><span class="text-muted"> el RUT de alguna de las empresas registradas en tu perfil.</span></li>
+                        <li><span class="font-weight-bold">Contraseña:</span><span class="text-muted"> contraseña del Servicio de Impuestos Internos (SII) de la empresa correspondiente.</span></li>
+                        <li><span class="font-weight-bold">Periodo:</span><span class="text-muted"> periodo tributario que se desea consultar en formato Año-Mes (Ej: Julio de 2022 corresponde a 202207).</span></li>
+                    </ul>
+                    <div class="container row">
+                        <input class="form-control mb-1 bg-dark text-light" type="text" value="{{origin}}/api/v1/getDetalleExport/compra/<apiKey>/<rut>/<password>/<period>" id="getDetalleExportCompraUser"/>
+                        <button class="btn btn-light font-weight-bold my-0 my-sm-0" onclick="myFunction('getDetalleExportCompraUser')">Copiar</button>
+                    </div>
+                </div>
+                <h4>Detalle de Ventas Exportable</h4>
+                <div>
+                    <ul>
+                        <li><span class="font-weight-bold">apiKey:</span><span class="text-muted"> corresponde a tu apiKey de usuario, disponible en tu perfil.</span></li>
+                        <li><span class="font-weight-bold">R.U.T.:</span><span class="text-muted"> el RUT de alguna de las empresas registradas en tu perfil.</span></li>
+                        <li><span class="font-weight-bold">Contraseña:</span><span class="text-muted"> contraseña del Servicio de Impuestos Internos (SII) de la empresa correspondiente.</span></li>
+                        <li><span class="font-weight-bold">Periodo:</span><span class="text-muted"> periodo tributario que se desea consultar en formato Año-Mes (Ej: Julio de 2022 corresponde a 202207).</span></li>
+                    </ul>
+                    <div class="container row">
+                        <input class="form-control mb-1 bg-dark text-light" type="text" value="{{origin}}/api/v1/getDetalleExport/venta/<apiKey>/<rut>/<password>/<period>" id="getDetalleExportVentaUser"/>
+                        <button class="btn btn-light font-weight-bold my-0 my-sm-0" onclick="myFunction('getDetalleExportVentaUser')">Copiar</button>
+                    </div>
+                </div>
+                <h4>Detalle de Compras por Tipo de Documento</h4>
+                <div>
+                    <ul>
+                        <li><span class="font-weight-bold">apiKey:</span><span class="text-muted"> corresponde a tu apiKey de usuario, disponible en tu perfil.</span></li>
+                        <li><span class="font-weight-bold">R.U.T.:</span><span class="text-muted"> el RUT de alguna de las empresas registradas en tu perfil.</span></li>
+                        <li><span class="font-weight-bold">Contraseña:</span><span class="text-muted"> contraseña del Servicio de Impuestos Internos (SII) de la empresa correspondiente.</span></li>
+                        <li><span class="font-weight-bold">Periodo:</span><span class="text-muted"> periodo tributario que se desea consultar en formato Año-Mes (Ej: Julio de 2022 corresponde a 202207).</span></li>
+                        <li><span class="font-weight-bold">Tipo de Documento</span><span class="text-muted"> Cada tipo de documento tiene un numero asignado. Para más informacion puedes ver en <span class="font-weight-bold">Otras llamadas</span>.</span></li>
+                    </ul>
+                    <div class="container row">
+                        <input class="form-control mb-1 bg-dark text-light" type="text" value="{{origin}}/api/v1/getDetalle/compra/<apiKey>/<rut>/<password>/<doc_type>/<period>" id="getDetalleCompraUser"/>
+                        <button class="btn btn-light font-weight-bold my-0 my-sm-0" onclick="myFunction('getDetalleCompraUser')">Copiar</button>
+                    </div>
+                </div>
+                <h4>Detalle de Ventas por Tipo de Documento</h4>
+                <div>
+                    <ul>
+                        <li><span class="font-weight-bold">apiKey:</span><span class="text-muted"> corresponde a tu apiKey de usuario, disponible en tu perfil.</span></li>
+                        <li><span class="font-weight-bold">R.U.T.:</span><span class="text-muted"> el RUT de alguna de las empresas registradas en tu perfil.</span></li>
+                        <li><span class="font-weight-bold">Contraseña:</span><span class="text-muted"> contraseña del Servicio de Impuestos Internos (SII) de la empresa correspondiente.</span></li>
+                        <li><span class="font-weight-bold">Periodo:</span><span class="text-muted"> periodo tributario que se desea consultar en formato Año-Mes (Ej: Julio de 2022 corresponde a 202207).</span></li>
+                        <li><span class="font-weight-bold">Tipo de Documento</span><span class="text-muted"> Cada tipo de documento tiene un numero asignado. Para más informacion puedes ver en <span class="font-weight-bold">Otras llamadas</span>.</span></li>
+                    </ul>
+                    <div class="container row">
+                        <input class="form-control mb-1 bg-dark text-light" type="text" value="{{origin}}/api/v1/getDetalle/venta/<apiKey>/<rut>/<password>/<doc_type>/<period>" id="getDetalleVentaUser"/>
+                        <button class="btn btn-light font-weight-bold my-0 my-sm-0" onclick="myFunction('getDetalleVentaUser')">Copiar</button>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-5">
+                <h3 id="Llamadas-de-empresa">Llamadas de empresa</h3>
+                <p>
+                    Las llamadas de empresa permiten acceder exclusivamente a los datos validados por la
+                    API Key, manteniendo seguros los datos ed tus otras empresas registradas.
+                </p>
+                <h4>Resumen de Compras</h4>
+                <div>
+                    <ul>
+                        <li><span class="font-weight-bold">apiKey:</span><span class="text-muted"> corresponde a tu apiKey de empresa, disponible en tu perfil.</span></li>
+                        <li><span class="font-weight-bold">Contraseña:</span><span class="text-muted"> contraseña del Servicio de Impuestos Internos (SII) de la empresa correspondiente.</span></li>
+                        <li><span class="font-weight-bold">Periodo:</span><span class="text-muted"> periodo tributario que se desea consultar en formato Año-Mes (Ej: Julio de 2022 corresponde a 202207).</span></li>
+                    </ul>
+                    <div class="container row">
+                        <input class="form-control mb-1 bg-dark text-light" type="text" value="{{origin}}/api/v1/company/getResumen/compra/<apiKey>/<password>/<period>" id="getResumenCompraCompany"/>
+                        <button class="btn btn-light font-weight-bold my-0 my-sm-0" onclick="myFunction('getResumenCompraCompany')">Copiar</button>
+                    </div>
+                </div>
+                <h4>Resumen de Ventas</h4>
+                <div>
+                    <ul>
+                        <li><span class="font-weight-bold">apiKey:</span><span class="text-muted"> corresponde a tu apiKey de empresa, disponible en tu perfil.</span></li>
+                        <li><span class="font-weight-bold">Contraseña:</span><span class="text-muted"> contraseña del Servicio de Impuestos Internos (SII) de la empresa correspondiente.</span></li>
+                        <li><span class="font-weight-bold">Periodo:</span><span class="text-muted"> periodo tributario que se desea consultar en formato Año-Mes (Ej: Julio de 2022 corresponde a 202207).</span></li>
+                    </ul>
+                    <div class="container row">
+                        <input class="form-control mb-1 bg-dark text-light" type="text" value="{{origin}}/api/v1/company/getResumen/venta/<apiKey>/<password>/<period>" id="getResumenVentaCompany"/>
+                        <button class="btn btn-light font-weight-bold my-0 my-sm-0" onclick="myFunction('getResumenVentaCompany')">Copiar</button>
+                    </div>
+                </div>
+                <h4>Detalle de Compras Exportable</h4>
+                <div>
+                    <ul>
+                        <li><span class="font-weight-bold">apiKey:</span><span class="text-muted"> corresponde a tu apiKey de empresa, disponible en tu perfil.</span></li>
+                        <li><span class="font-weight-bold">Contraseña:</span><span class="text-muted"> contraseña del Servicio de Impuestos Internos (SII) de la empresa correspondiente.</span></li>
+                        <li><span class="font-weight-bold">Periodo:</span><span class="text-muted"> periodo tributario que se desea consultar en formato Año-Mes (Ej: Julio de 2022 corresponde a 202207).</span></li>
+                    </ul>
+                    <div class="container row">
+                        <input class="form-control mb-1 bg-dark text-light" type="text" value="{{origin}}/api/v1/company/getDetalleExport/compra/<apiKey>/<password>/<period>" id="getDetalleExportCompraCompany"/>
+                        <button class="btn btn-light font-weight-bold my-0 my-sm-0" onclick="myFunction('getDetalleExportCompraCompany')">Copiar</button>
+                    </div>
+                </div>
+                <h4>Detalle de Ventas Exportable</h4>
+                <div>
+                    <ul>
+                        <li><span class="font-weight-bold">apiKey:</span><span class="text-muted"> corresponde a tu apiKey de empresa, disponible en tu perfil.</span></li>
+                        <li><span class="font-weight-bold">Contraseña:</span><span class="text-muted"> contraseña del Servicio de Impuestos Internos (SII) de la empresa correspondiente.</span></li>
+                        <li><span class="font-weight-bold">Periodo:</span><span class="text-muted"> periodo tributario que se desea consultar en formato Año-Mes (Ej: Julio de 2022 corresponde a 202207).</span></li>
+                    </ul>
+                    <div class="container row">
+                        <input class="form-control mb-1 bg-dark text-light" type="text" value="{{origin}}/api/v1/company/getDetalleExport/venta/<apiKey>/<password>/<period>" id="getDetalleExportVentaCompany"/>
+                        <button class="btn btn-light font-weight-bold my-0 my-sm-0" onclick="myFunction('getDetalleExportVentaCompany')">Copiar</button>
+                    </div>
+                </div>
+                <h4>Detalle de Compras por Tipo de Documento</h4>
+                <div>
+                    <ul>
+                        <li><span class="font-weight-bold">apiKey:</span><span class="text-muted"> corresponde a tu apiKey de empresa, disponible en tu perfil.</span></li>
+                        <li><span class="font-weight-bold">Contraseña:</span><span class="text-muted"> contraseña del Servicio de Impuestos Internos (SII) de la empresa correspondiente.</span></li>
+                        <li><span class="font-weight-bold">Periodo:</span><span class="text-muted"> periodo tributario que se desea consultar en formato Año-Mes (Ej: Julio de 2022 corresponde a 202207).</span></li>
+                        <li><span class="font-weight-bold">Tipo de Documento</span><span class="text-muted"> Cada tipo de documento tiene un numero asignado. Para más informacion puedes ver en <span class="font-weight-bold">Otras llamadas</span>.</span></li>
+                    </ul>
+                    <div class="container row">
+                        <input class="form-control mb-1 bg-dark text-light" type="text" value="{{origin}}/api/v1/company/getDetalle/compra/<apiKey>/<password>/<doc_type>/<period>" id="getDetalleCompraCompany"/>
+                        <button class="btn btn-light font-weight-bold my-0 my-sm-0" onclick="myFunction('getDetalleCompraCompany')">Copiar</button>
+                    </div>
+                </div>
+                <h4>Detalle de Ventas por Tipo de Documento</h4>
+                <div>
+                    <ul>
+                        <li><span class="font-weight-bold">apiKey:</span><span class="text-muted"> corresponde a tu apiKey de empresa, disponible en tu perfil.</span></li>
+                        <li><span class="font-weight-bold">Contraseña:</span><span class="text-muted"> contraseña del Servicio de Impuestos Internos (SII) de la empresa correspondiente.</span></li>
+                        <li><span class="font-weight-bold">Periodo:</span><span class="text-muted"> periodo tributario que se desea consultar en formato Año-Mes (Ej: Julio de 2022 corresponde a 202207).</span></li>
+                        <li><span class="font-weight-bold">Tipo de Documento</span><span class="text-muted"> Cada tipo de documento tiene un numero asignado. Para más informacion puedes ver en <span class="font-weight-bold">Otras llamadas</span>.</span></li>
+                    </ul>
+                    <div class="container row">
+                        <input class="form-control mb-1 bg-dark text-light" type="text" value="{{origin}}/api/v1/company/getDetalle/venta/<apiKey>/<password>/<doc_type>/<period>" id="getDetalleVentaCompany"/>
+                        <button class="btn btn-light font-weight-bold my-0 my-sm-0" onclick="myFunction('getDetalleVentaCompany')">Copiar</button>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-5">
+                <h3 id="otras-llamads">Otras llamadas</h3>
+                <p>
+                    Existen además algunas otras llamadas para obtener informacion no asociada a
+                    las empresas y/o usuarios.
+                </p>
+                <h4>Tipos de Documento</h4>
+                <p>Retorna una lista con todos los tipos de documentos y sus numeros asociados</p>
+                <div class="container row">
+                    <input class="form-control mb-1 bg-dark text-light" type="text" value="{{origin}}/api/v1/getDocumentTypes" id="getDocumentTypes"/>
+                    <button class="btn btn-light font-weight-bold my-0 my-sm-0" onclick="myFunction('getDocumentTypes')">Copiar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

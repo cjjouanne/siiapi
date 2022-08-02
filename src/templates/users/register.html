@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="text-center pt-5 col-sm-4">
+        <form class="form-signin form-group" method="POST" action="">
+            <h1 class="h3 mb-3 font-weight-normal">Bienvenido!</h1>
+            {{ form.hidden_tag() }}
+            <div class="form-floating">
+                {% if form.email.errors %}
+                    {{ form.email(class="form-control mb-1 is-invalid", placeholder="Email") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.email.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.email(class="form-control mb-1", placeholder="Email") }}
+                {% endif %}
+            </div>
+            <div class="form-floating">
+                {% if form.username.errors %}
+                    {{ form.username(class="form-control mb-1 is-invalid", placeholder="Nombre") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.username.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.username(class="form-control mb-1", placeholder="Nombre") }}
+                {% endif %}
+            </div>
+            <div class="form-floating">
+                {% if form.password.errors %}
+                    {{ form.password(class="form-control mb-1 is-invalid", placeholder="Contraseña") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.password.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.password(class="form-control mb-1", placeholder="Contraseña") }}
+                {% endif %}
+            </div>
+            <div class="form-floating">
+                {% if form.confirm_password.errors %}
+                    {{ form.confirm_password(class="form-control mb-1 is-invalid", placeholder="Confirma tu contraseña") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.confirm_password.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.confirm_password(class="form-control mb-1", placeholder="Confirma tu contraseña") }}
+                {% endif %}
+            </div>
+            <div>
+                {{ form.register(class="btn btn-block btn-primary font-weight-bold my-2") }}
+            </div>
+        </form>
+        <span class="text-muted">Tienes Cuenta? <a class="text-muted" href="{{ url_for('login') }}">Ingresa Aqui</a></span>
+    </div>
+{% endblock content %}

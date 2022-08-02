@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="container-fluid row">
+        <div class="col-sm-8">
+            <h1>Contacto</h1>
+            <p class="text-muted">Si tienes dudas, quieres reportar un error en el funcionamiento de la API,
+             o simplemente quieres sugerir una funcionalidad nueva, no dudes contactarnos
+             y nuestro equipo te responderá lo antes posible</p>
+        </div>
+        <div class="col-sm-8">
+            <form class="form-signin form-group" method="POST" action="">
+                {{ form.hidden_tag() }}
+                <div class="form-floating">
+                    {% if form.email.errors %}
+                        {{ form.email(class="form-control mb-1 is-invalid", placeholder="Email") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.email.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.email(class="form-control mb-1", placeholder="Email") }}
+                    {% endif %}
+                </div>
+                <div class="form-floating">
+                    {% if form.subject.errors %}
+                        {{ form.subject(class="form-control mb-1 is-invalid", placeholder="Asunto") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.subject.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.subject(class="form-control mb-1", placeholder="Asunto") }}
+                    {% endif %}
+                </div>
+                <div class="form-floating">
+                    {% if form.body.errors %}
+                        {{ form.body(class="form-control mb-1 is-invalid h-100", placeholder="Escribe tu mensaje aqui...") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.body.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.body(class="form-control mb-1 h-100",rows="10", placeholder="Escribe tu mensaje aqui...") }}
+                    {% endif %}
+                </div>
+                <div>
+                    <div>
+                        {{ form.submit(class="btn btn-block btn-primary font-weight-bold my-2") }}
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock content %}

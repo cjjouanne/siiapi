@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="text-center pt-5 col-sm-4">
+        <form class="form-signin form-group" method="POST" action="">
+            <h1 class="h3 mb-3 font-weight-normal">Bienvenido!</h1>
+            {{ form.hidden_tag() }}
+            <div class="form-floating">
+                {% if form.email.errors %}
+                    {{ form.email(class="form-control mb-1 is-invalid", placeholder="Email") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.email.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.email(class="form-control mb-1", placeholder="Email") }}
+                {% endif %}
+            </div>
+            <div class="form-floating">
+                {% if form.password.errors %}
+                    {{ form.password(class="form-control mb-1 is-invalid", placeholder="Contraseña") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.password.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.password(class="form-control mb-1", placeholder="Contraseña") }}
+                {% endif %}
+            </div>
+            <div>
+                <div>
+                    {{ form.login(class="btn btn-block btn-primary font-weight-bold my-2") }}
+                </div>
+            </div>
+        </form>
+        <span class="text-muted">No tienes Cuenta? <a class="text-muted" href="{{ url_for('register') }}">Registrate Aqui</a></span>
+    </div>
+{% endblock content %}

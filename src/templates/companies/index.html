@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div>
+        <h1>Mis empresas</h1>
+        <div class="container-fluid row mt-5">
+            <div class="container-fluid row">
+                <h5>Bienvenido {{current_user.username}}</h5>
+            </div>
+            <div class="container-fluid row">
+                <input class="form-control mb-1" type="hidden" value="{{current_user.apiKey}}" id="myUser">
+                <button class="btn btn-primary font-weight-bold my-0 my-sm-0" onclick="myFunction('myUser')">Copiar API Key Personal</button>
+            </div>
+        </div>
+        <div class="container-fluid row mt-5">
+            <div class="col-sm-4">
+                <form class="form-signin form-group" method="POST" action="">
+                    {{ form.hidden_tag() }}
+                    <h1 class="h3 mb-3 font-weight-normal">Crear una nueva</h1>
+                    <div class="form-floating">
+                        {% if form.name.errors %}
+                            {{ form.name(class="form-control mb-1 is-invalid", placeholder="Razon Social") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.name.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.name(class="form-control mb-1", placeholder="Razon Social") }}
+                        {% endif %}
+                    </div>
+                    <div class="form-floating">
+                        {% if form.rut.errors %}
+                            {{ form.rut(class="form-control mb-1 is-invalid", placeholder="RUT") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.rut.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.rut(class="form-control mb-1", placeholder="RUT") }}
+                        {% endif %}
+                    </div>
+                    <div>
+                        <div>
+                            {{ form.submit(class="btn btn-block btn-primary font-weight-bold my-2") }}
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-sm-8">
+                <table class="table">
+                    <thead class="thead-primary">
+                        <tr>
+                            <th>Razon Social</th>
+                            <th>RUT</th>
+                            <th>API Key</th>
+                            <th> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in companies %}
+                            <tr>
+                                <td>{{i.name}}</td>
+                                <td>{{i.rut}}</td>
+                                <td>
+                                    <input class="form-control mb-1" type="hidden" value="{{i.apiKey}}" id="myInput{{i.id}}">
+                                    <button class="btn btn-primary font-weight-bold my-0 my-sm-0" onclick="myFunction('myInput{{i.id}}')">Copiar API Key</button>
+                                </td>
+                                <td>
+                                    <form method="POST" action="/deleteCompany">
+                                        <input type="hidden" value="{{i.id}}" name="company"/>
+                                        <button type="submit" class="btn btn-outline-primary font-weight-bold my-0 my-sm-0" onclick="return confirm('Esta accion es permanente, ¿Seguro que deseas borrar {{i.name}}, {{i.rut}}?');">BORRAR</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
